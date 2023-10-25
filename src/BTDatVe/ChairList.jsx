@@ -13,7 +13,7 @@ export const ChairList = (props) => {
           /* dùng d-flex cho xếp thành hàng ngang */
           <div
             key={hangGhe.hang}
-            className="d-flex justify-content-center gap-3 mt-3"
+            className="d-flex gap-3 mt-3"
           >
             <div style={{
               width: 40,
