@@ -9,11 +9,13 @@ const initialState = {
 
 // Cái hàm createSlice giúp vừa tạo ra reducer vừa tạo ra file action
 // ở redux thường thì phải tạo ra 1 reducer.js và 1 action.js
-// không cần phải tách ra file action riêng như trong bài BTPhone nữa
+// không cần phải tách ra file action riêng như trong redux thường
 export const btMovieBookingSlice = createSlice (
     {
+        // cái name này đưa vào root reducer
         name: "BTMovieBooking",
         initialState,
+        // nơi bắt các action là trong reducers, ko cần phải tạo ra file action riêng và bắt switch case nhưng trong bài BTPhone
         reducers: {
 
         },
