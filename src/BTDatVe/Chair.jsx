@@ -5,7 +5,7 @@ import './style.css'
 export const Chair = (props) => {
   const { ghe } = props;
   return (
-    <div>
+    <div className="ghe">
         {ghe.soGhe}
     </div>
   )

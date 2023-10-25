@@ -13,13 +13,14 @@ export const ChairList = (props) => {
           /* dùng d-flex cho xếp thành hàng ngang */
           <div
             key={hangGhe.hang}
-            className="d-flex gap-3 mt-3"
+            className="d-flex gap-3 mt-3 hangGhe"
           >
             <div style={{
               width: 40,
               height: 40,
               display: "flex",
               alignItems: "center",
+              justifyContent: "center",
             }}>
               {/* map ra thành phần "hang" trong data */}
               {hangGhe.hang}
@@ -33,8 +34,8 @@ export const ChairList = (props) => {
               })}
             </div>
           </div>
-  );
-})}
+        );
+      })}
     </div >
   );
 };

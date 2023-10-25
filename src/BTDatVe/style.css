@@ -5,8 +5,11 @@
 
 .container {
     background-image: url(./../../public/image/bgmovie.jpg);
-    color: #ffffff;
-    color: rgb(240, 224, 6);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    /* height: 900px; */
+    color: black;
     font-size: 20px;
     font-weight: 700;
 }
@@ -17,13 +20,24 @@
 
 
 .ghe{
-    border: 3px solid orange;
-    width: 45px;
-    height: 35px;
-    font-size: 12px;
-    margin-left: 2%;
-    margin-bottom: 1%;
-    border-radius: 5px;
+    border: 2px solid black;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    color: rgb(0, 255, 0);
+    /* margin-left: 2%; */
+    /* margin-bottom: 1%; */
+    border-radius: 6px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.hangGhe {
+    font-size: 24px;
+    color: rgb(0, 255, 0);
 }
 
 .rowNumber{
@@ -50,7 +64,7 @@
     border-left: 50px solid transparent;
     border-right: 50px solid transparent;
     height: 100;
-    width:80%;
+    /* width:80%; */
     filter: drop-shadow(4px 30px 20px rgba(255, 255, 255, 0.5));
     font-size: 25px;
     color: #fff;
