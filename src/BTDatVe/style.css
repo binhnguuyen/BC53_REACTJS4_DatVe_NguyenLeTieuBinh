@@ -3,6 +3,14 @@
     src: url('../font/Pony.ttf');
 }
 
+.container {
+    background-image: url(./../../public/image/bgmovie.jpg);
+    color: #ffffff;
+    color: rgb(240, 224, 6);
+    font-size: 20px;
+    font-weight: 700;
+}
+
 .bookingMovie{
     font-family: 'fontGame';
 }
