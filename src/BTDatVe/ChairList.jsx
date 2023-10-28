@@ -15,7 +15,7 @@ export const ChairList = (props) => {
           /* dùng d-flex cho xếp thành hàng ngang */
           <div
             key={hangGhe.hang}
-            className="d-flex gap-3 mt-3 hangGhe"
+            className="d-flex justify-content-center mt-3 hangGhe"
           >
             <div style={{
               width: 40,
@@ -30,7 +30,7 @@ export const ChairList = (props) => {
 
             {/* map ra thành phần danhSachGhe trong data */ }
             {/* dùng d-flex cho xếp thành hàng ngang */ }
-            <div className="d-flex gap-3">
+            <div className="d-flex blockGhe">
               {hangGhe.danhSachGhe.map((ghe) => {
                 return <Chair ghe={ghe} key={ghe.soGhe} />;
               })}

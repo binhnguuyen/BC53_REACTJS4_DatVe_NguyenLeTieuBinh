@@ -28,7 +28,7 @@ export const Result = () => {
       </div>
 
       <div className="d-flex gap-3 mt-3">
-        <div className="ghe"></div>
+        <div className="gheTrong"></div>
         <span>Ghế trống</span>
       </div>
       <br />
