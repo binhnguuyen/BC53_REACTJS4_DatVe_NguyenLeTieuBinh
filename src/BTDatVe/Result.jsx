@@ -7,12 +7,12 @@ export const Result = () => {
   // Thử lấy number từ btMovieBooking (đc định nghĩa trong rootReducer)
   // useSelector trả về 1 call back về 1 cái state btMovieBooking
   // bóc tách ra muốn lấy những cái nào vì trong btMovieBooking có nhiều state
-  // const {number} = useSelector((state) => state.btMovieBooking)
+
+  const {number, chairsBooking} = useSelector((state) => state.btMovieBooking)
+  // console.log('chairsBooking: ', chairsBooking);
   // console.log('number: ', number);
 
   const dispatch = useDispatch();
-
-  
 
   return (
     <div>
@@ -43,7 +43,17 @@ export const Result = () => {
         </thead>
         <tbody>
           {/* nơi mình map ghế vào */}
-
+          {
+            chairsBooking.map((ghe) => {
+              return(
+                <tr>
+                  <td>{ghe.soGhe}</td>
+                  <td>{ghe.gia}</td>
+                  <td className='text-danger'>X</td>
+                </tr>
+              )
+            })
+          }
         </tbody>
       </table>
       

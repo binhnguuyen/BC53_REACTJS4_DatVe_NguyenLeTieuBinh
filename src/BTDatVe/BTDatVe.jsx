@@ -15,6 +15,7 @@ export const BTDatVe = () => {
                     <div className="p-3 text-white text-center bg-dark fw-bold mb-5 screen">
                         SCREEN
                     </div>
+                    {/* ở đây chỉ cần truyền data xuống vì data này ko đưa lên store của redux */}
                     <ChairList data={data} />
                 </div>
                 <div className="col-4">
