@@ -1,6 +1,13 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 
 export const Result = () => {
+  /*
+  // Thử lấy number từ btMovieBooking
+  const {number} = useSelector((state) => state.btMovieBooking)
+  console.log('number: ', number);
+  */
+
   return (
     <div>
       <h2>Kết quả đặt vé</h2>

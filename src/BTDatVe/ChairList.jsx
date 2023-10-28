@@ -1,5 +1,6 @@
 import React from "react";
 import { Chair } from "./Chair";
+import './style.css'
 
 export const ChairList = (props) => {
   const { data } = props;
