@@ -4,10 +4,11 @@ import { Chair } from "./Chair";
 
 export const ChairList = (props) => {
   const { data } = props;
+  const dataFilter = data.filter((e) => e.hang !== "")
   // trong return chỉ có dc 1 thành phần trả về nên tất cả phải bỏ trong div
   return (
     <div>
-      {data.map((hangGhe) => {
+      {dataFilter.map((hangGhe) => {
         return (
           // trong return chỉ có dc 1 thành phần trả về nên tất cả phải bỏ trong div
           /* map thì phải có key đưa vào ko thì bị lỗi */
