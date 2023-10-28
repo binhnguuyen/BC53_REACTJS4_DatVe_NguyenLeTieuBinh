@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { btMovieBookingActions } from '../store/BTDatVe/slice';
 
 export const Result = () => {
-  
+
   // Thử lấy number từ btMovieBooking (đc định nghĩa trong rootReducer)
   // useSelector trả về 1 call back về 1 cái state btMovieBooking
   // bóc tách ra muốn lấy những cái nào vì trong btMovieBooking có nhiều state
 
-  const {number, chairsBooking} = useSelector((state) => state.btMovieBooking)
+  const { number, chairsBooking } = useSelector((state) => state.btMovieBooking)
   // console.log('chairsBooking: ', chairsBooking);
   // console.log('number: ', number);
 
@@ -45,7 +45,7 @@ export const Result = () => {
           {/* nơi mình map ghế vào */}
           {
             chairsBooking.map((ghe) => {
-              return(
+              return (
                 <tr>
                   <td>{ghe.soGhe}</td>
                   <td>{ghe.gia}</td>
@@ -55,8 +55,22 @@ export const Result = () => {
             })
           }
         </tbody>
+        <tr>
+          <td>Tổng tiền</td>
+          <td>
+            {
+              // hàm reduce giúp chạy và xét tất cả các phần tử trong 1 mảng bất kỳ
+              // thông thường sd khi tính tổng tất cả các giá trị trong 1 mảng
+              // 0 là giá trị ban đầu
+              // viết đầy đủ: return ( total += value.gia, 0 )
+              // viết ngắn gọn thì bỏ "return" và ()
+              chairsBooking.reduce((total, value) => total + value.gia, 0)
+            }
+          </td>
+        </tr>
       </table>
-      
+
+
       {/* <button className='btn btn-success' onClick={() => {
         // cách viết của Redux cũ
         // dispatch({
@@ -71,7 +85,7 @@ export const Result = () => {
       }}>
         +
       </button> */}
-      
+
     </div>
   )
 }
