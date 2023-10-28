@@ -11,6 +11,7 @@ export const Result = () => {
   return (
     <div>
       <h2>Kết quả đặt vé</h2>
+      {/* thêm d-flex cho ô vuông và chữ nằm trên cùng 1 hàng */}
       <div className="d-flex gap-3 mt-3">
         <div className="ghe"></div>
         <span>Ghế đã đặt</span>
@@ -34,6 +35,7 @@ export const Result = () => {
             <th>Huỷ</th>
           </tr>
         </thead>
+        {/* nơi mình map ghế vào */}
         <tbody>
 
         </tbody>
