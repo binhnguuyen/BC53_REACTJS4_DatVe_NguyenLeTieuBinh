@@ -6,6 +6,7 @@ import { btMovieBookingActions } from "../store/BTDatVe/slice";
 // cn hay gì đó là tên bất kỳ vì nó export default, classnames là cái thư viện đã cài
 import cn from "classnames"
 import classNames from "classnames";
+import { Result } from "./Result";
 
 export const Chair = (props) => {
   const { ghe } = props;
@@ -26,7 +27,7 @@ export const Chair = (props) => {
           // nếu giá trị là true thì nó sẽ thêm class gheDangChon vào thẻ div cha. Ngược lại là false thì sẽ mất class gheDangChon vào
           // những ghế nào đang nằm trong chairsBooking thì thêm class gheDangChon, nếu có thì thêm class gheDangChon
           // "gheDangChon: true" nghĩa là nếu phép tính sau dấu ":" là true thì thêm className "gheDangChon" vào, ngược lại nếu là false thì ko thêm
-          gheDangChon: chairsBooking.find(e => e.soGhe === ghe.soGhe),
+          gheDangChon: chairsBooking.find((e) => e.soGhe === ghe.soGhe),
         },
       )}
       // gán cho nó một sự kiện onlick để dispatch lên store của redux
@@ -35,6 +36,7 @@ export const Chair = (props) => {
         dispatch(btMovieBookingActions.setChairsBooking(ghe))
       }}>
       {ghe.soGhe}
+
     </div>
   )
 

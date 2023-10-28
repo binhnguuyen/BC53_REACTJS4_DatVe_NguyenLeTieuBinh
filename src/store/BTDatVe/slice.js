@@ -37,11 +37,27 @@ export const btMovieBookingSlice = createSlice (
 
             // tạo action cho chairsBooking
             setChairsBooking: (state, action) => {
+                // bóc tách action trong payload ra thành action luôn
+                const {payload} = action;
                 // console.log('action: ', action);
+
+                // định nghĩa chairsBooking trong state ra thành stateChairsBooking luôn
+                const stateChairsBooking = state.chairsBooking;
+
                 // action đưa lên với payload là 1 cái ghế
-                // sau đó mình phải push nó vào cái mảng rỗng chairsBooking trong initialState
-                state.chairsBooking.push(action.payload);
-                // console.log('state.chairsBooking: ', state.chairsBooking);
+                // sau đó mình phải push nó vào cái mảng rỗng stateChairsBooking trong initialState
+                const index = stateChairsBooking.findIndex((value) => value.soGhe === payload.soGhe)
+                // nếu đã có ghế rồi thì xoá đi
+                if( index !== -1 ){
+                    // stateChairsBooking.filter((value) => value.soGhe !== payload.soGhe)
+                    // hoặc có thể xoá phần tử tìm đc trong mảng trong mảng như sau
+                    stateChairsBooking.splice(index, 1)
+                }
+                // nếu chưa có ghế thì push vào
+                else {
+                    stateChairsBooking.push(payload);
+                }
+                // console.log('stateChairsBooking: ', stateChairsBooking);
             }
 
         },

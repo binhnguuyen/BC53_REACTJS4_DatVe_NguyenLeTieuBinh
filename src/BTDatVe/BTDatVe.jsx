@@ -4,7 +4,7 @@ import { ChairList } from "./ChairList";
 import { Result } from "./Result";
 
 export const BTDatVe = () => {
-    console.log("data: ", data);
+    // console.log("data: ", data);
     return (
         <div className="container mt-3">
             <h1>CGV Nam Kỳ Khởi Nghĩa</h1>
