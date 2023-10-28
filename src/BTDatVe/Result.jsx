@@ -3,16 +3,15 @@ import { useDispatch, useSelector } from 'react-redux'
 import { btMovieBookingActions } from '../store/BTDatVe/slice';
 
 export const Result = () => {
-  
+
   // Thử lấy number từ btMovieBooking (đc định nghĩa trong rootReducer)
   // useSelector trả về 1 call back về 1 cái state btMovieBooking
   // bóc tách ra muốn lấy những cái nào vì trong btMovieBooking có nhiều state
-  const {number} = useSelector((state) => state.btMovieBooking)
+  const { number, chairsBooking } = useSelector((state) => state.btMovieBooking)
+  // console.log('chairsBooking: ', chairsBooking);
   // console.log('number: ', number);
 
   const dispatch = useDispatch();
-
-  
 
   return (
     <div>
@@ -43,10 +42,43 @@ export const Result = () => {
         </thead>
         <tbody>
           {/* nơi mình map ghế vào */}
-
+          {
+            chairsBooking.map((ghe) => {
+              return (
+                <tr key={ghe.soGhe}>
+                  <td>{ghe.soGhe}</td>
+                  <td>{ghe.gia}</td>
+                  <td className='text-danger'>X</td>
+                </tr>
+              )
+            })
+          }
         </tbody>
+        <tr>
+          <td>Tổng tiền</td>
+          <td>
+            {
+              // hàm reduce giúp chạy và xét tất cả các phần tử trong 1 mảng bất kỳ
+              // thông thường sd khi tính tổng tất cả các giá trị trong 1 mảng
+              // 0 là giá trị ban đầu
+              // viết đầy đủ: return ( total += value.gia, 0 )
+              // viết ngắn gọn thì bỏ "return" và ()
+              chairsBooking.reduce((total, value) => total + value.gia, 0)
+            }
+          </td>
+        </tr>
       </table>
-      
+      <button className='btn btn-success'
+        onClick={() => {
+          // payload lúc này có thể truyền hoặc ko, vì mình có thể dựa vào cái ghé đang chọn là chairsBooking
+          // nếu ko truyền gì vào thì nó hiểu là ko có payload và undefined
+          dispatch(btMovieBookingActions.setChairsBooked())
+        }}
+      >
+        Thanh toán
+      </button>
+
+
       {/* <button className='btn btn-success' onClick={() => {
         // cách viết của Redux cũ
         // dispatch({
@@ -61,7 +93,7 @@ export const Result = () => {
       }}>
         +
       </button> */}
-      
+
     </div>
   )
 }

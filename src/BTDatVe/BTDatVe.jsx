@@ -4,7 +4,7 @@ import { ChairList } from "./ChairList";
 import { Result } from "./Result";
 
 export const BTDatVe = () => {
-    console.log("data: ", data);
+    // console.log("data: ", data);
     return (
         <div className="container mt-3">
             <h1>CGV Nam Kỳ Khởi Nghĩa</h1>
@@ -15,6 +15,7 @@ export const BTDatVe = () => {
                     <div className="p-3 text-white text-center bg-dark fw-bold mb-5 screen">
                         SCREEN
                     </div>
+                    {/* ở đây chỉ cần truyền data xuống vì data này ko đưa lên store của redux */}
                     <ChairList data={data} />
                 </div>
                 <div className="col-4">

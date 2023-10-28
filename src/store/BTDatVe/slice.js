@@ -3,9 +3,9 @@ import { createSlice } from "@reduxjs/toolkit"
 // import { rootReducer } from "../rootReducer"
 
 const initialState = {
-    number: 100,
-    // chairsBooking: [],
-    // chairsBooked: [],
+    // number: 100,
+    chairsBooking: [],
+    chairsBooked: [],
 }
 
 // Cái hàm createSlice giúp vừa tạo ra reducer vừa tạo ra file action
@@ -34,7 +34,44 @@ export const btMovieBookingSlice = createSlice (
                 // immerjs là thư viện tích hợp sẵn trong redux toolkit giúp mình tham chiếu state mới của mình vào 1 ô nhớ mới chứ ko cần phải return{...state} như redux cũ
             }
             */
-           
+
+            // tạo action cho chairsBooking
+            setChairsBooking: (state, action) => {
+                // bóc tách action trong payload ra thành action luôn
+                const {payload} = action;
+                // console.log('action: ', action);
+
+                // định nghĩa chairsBooking trong state ra thành stateChairsBooking luôn
+                const stateChairsBooking = state.chairsBooking;
+
+                // action đưa lên với payload là 1 cái ghế
+                // sau đó mình phải push nó vào cái mảng rỗng stateChairsBooking trong initialState
+                const index = stateChairsBooking.findIndex((value) => value.soGhe === payload.soGhe)
+                // nếu đã có ghế rồi thì xoá đi
+                if( index !== -1 ){
+                    // stateChairsBooking.filter((value) => value.soGhe !== payload.soGhe)
+                    // hoặc có thể xoá phần tử tìm đc trong mảng trong mảng như sau
+                    stateChairsBooking.splice(index, 1)
+                }
+                // nếu chưa có ghế thì push vào
+                else {
+                    stateChairsBooking.push(payload);
+                }
+                // console.log('stateChairsBooking: ', stateChairsBooking);
+            },
+
+            // tạo action cho chairBooked
+            setChairsBooked: (state, action) => {
+                const {payload} = action;
+                const stateChairsBooked = state.chairsBooked;
+
+                // thêm ghế đang chọn vào ghế đã chọn
+                state.chairsBooked = [...state.chairsBooked, ...state.chairsBooking];
+                // sau khi thêm ghé đang chọn vào ghế đã chọn rồi thì ghế đang chọn phải đưa về mảng rỗng
+                state.chairsBooking = [];
+                console.log('stateChairsBooked: ', stateChairsBooked);
+            }
+
         },
     }
 )
