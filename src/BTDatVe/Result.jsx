@@ -1,12 +1,18 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { btMovieBookingActions } from '../store/BTDatVe/slice';
 
 export const Result = () => {
-  /*
-  // Thử lấy number từ btMovieBooking
+  
+  // Thử lấy number từ btMovieBooking (đc định nghĩa trong rootReducer)
+  // useSelector trả về 1 call back về 1 cái state btMovieBooking
+  // bóc tách ra muốn lấy những cái nào vì trong btMovieBooking có nhiều state
   const {number} = useSelector((state) => state.btMovieBooking)
-  console.log('number: ', number);
-  */
+  // console.log('number: ', number);
+
+  const dispatch = useDispatch();
+
+  
 
   return (
     <div>
@@ -35,11 +41,27 @@ export const Result = () => {
             <th>Huỷ</th>
           </tr>
         </thead>
-        {/* nơi mình map ghế vào */}
         <tbody>
+          {/* nơi mình map ghế vào */}
 
         </tbody>
       </table>
+      
+      {/* <button className='btn btn-success' onClick={() => {
+        // cách viết của Redux cũ
+        // dispatch({
+        //   type: "INCREASENUMBER",
+        //   payload: 2,
+        // })
+        // cách viết của Redux toolkit
+        // truyền lên 1 action, chỉ cần chấm là nó sẽ hiển thị nhưng action có thể sd đc do mình đã định nghĩa nó trong slice
+        // cái type trong React toolkit nó sẽ tự tạo, lúc đó tên nó sẽ là tên trong "name" / "tên action". ở đây là BTMovieBooking/increaseNumber
+        // ví dụ truyền "123" vào trong của action thì nghĩa là payload truyền vào là 123 thay vì phải viết thành 2 dòng như trên của React cũ
+        dispatch(btMovieBookingActions.increaseNumber(123))
+      }}>
+        +
+      </button> */}
+      
     </div>
   )
 }
