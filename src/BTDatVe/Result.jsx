@@ -48,7 +48,13 @@ export const Result = () => {
                 <tr key={ghe.soGhe}>
                   <td>{ghe.soGhe}</td>
                   <td>{ghe.gia}</td>
-                  <td className='text-danger'>X</td>
+                  <td className='text-danger'>
+                    <button className='btn btn-danger' 
+                      onClick={() => {
+                        dispatch(btMovieBookingActions.setChairsBooking(ghe))
+                      }}
+                    >X</button>
+                  </td>
                 </tr>
               )
             })
