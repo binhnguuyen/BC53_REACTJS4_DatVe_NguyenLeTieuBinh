@@ -11,9 +11,10 @@ import { Result } from "./Result";
 export const Chair = (props) => {
   const { ghe } = props;
 
-  // lấy chairsBooking về 
-  const { chairsBooking } = useSelector((state) => state.btMovieBooking)
+  // lấy chairsBooking, chairsBooked về 
+  const { chairsBooking, chairsBooked } = useSelector((state) => state.btMovieBooking)
   // console.log('chairsBooking: ', chairsBooking);
+
 
   // tạo hàm dispatch
   const dispatch = useDispatch()
@@ -22,14 +23,15 @@ export const Chair = (props) => {
       // cái hàm cn này hoạc động giống rest operator nên mình truyền vào bao nhiêu tham số cũng đc
       className={cn
         // thêm vào className "ghe" mặc định để css
-        ("ghe", 
-        {
-          // nếu giá trị là true thì nó sẽ thêm class gheDangChon vào thẻ div cha. Ngược lại là false thì sẽ mất class gheDangChon vào
-          // những ghế nào đang nằm trong chairsBooking thì thêm class gheDangChon, nếu có thì thêm class gheDangChon
-          // "gheDangChon: true" nghĩa là nếu phép tính sau dấu ":" là true thì thêm className "gheDangChon" vào, ngược lại nếu là false thì ko thêm
-          gheDangChon: chairsBooking.find((e) => e.soGhe === ghe.soGhe),
-        },
-      )}
+        ("ghe",
+          {
+            // nếu giá trị là true thì nó sẽ thêm class gheDangChon vào thẻ div cha. Ngược lại là false thì sẽ mất class gheDangChon vào
+            // những ghế nào đang nằm trong chairsBooking thì thêm class gheDangChon, nếu có thì thêm class gheDangChon
+            // "gheDangChon: true" nghĩa là nếu phép tính sau dấu ":" là true thì thêm className "gheDangChon" vào, ngược lại nếu là false thì ko thêm
+            gheDangChon: chairsBooking.find((e) => e.soGhe === ghe.soGhe),
+            gheDuocChon: chairsBooked.find((e) => e.soGhe === ghe.soGhe),
+          },
+        )}
       // gán cho nó một sự kiện onlick để dispatch lên store của redux
       // payload ở đây chính là cái ghế mà mình đang chọn
       onClick={() => {

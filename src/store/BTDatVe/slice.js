@@ -5,7 +5,7 @@ import { createSlice } from "@reduxjs/toolkit"
 const initialState = {
     // number: 100,
     chairsBooking: [],
-    // chairsBooked: [],
+    chairsBooked: [],
 }
 
 // Cái hàm createSlice giúp vừa tạo ra reducer vừa tạo ra file action
@@ -58,6 +58,18 @@ export const btMovieBookingSlice = createSlice (
                     stateChairsBooking.push(payload);
                 }
                 // console.log('stateChairsBooking: ', stateChairsBooking);
+            },
+
+            // tạo action cho chairBooked
+            setChairsBooked: (state, action) => {
+                const {payload} = action;
+                const stateChairsBooked = state.chairsBooked;
+
+                // thêm ghế đang chọn vào ghế đã chọn
+                state.chairsBooked = [...state.chairsBooked, ...state.chairsBooking];
+                // sau khi thêm ghé đang chọn vào ghế đã chọn rồi thì ghế đang chọn phải đưa về mảng rỗng
+                state.chairsBooking = [];
+                console.log('stateChairsBooked: ', stateChairsBooked);
             }
 
         },
