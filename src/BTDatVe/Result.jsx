@@ -7,7 +7,7 @@ export const Result = () => {
   // Thử lấy number từ btMovieBooking (đc định nghĩa trong rootReducer)
   // useSelector trả về 1 call back về 1 cái state btMovieBooking
   // bóc tách ra muốn lấy những cái nào vì trong btMovieBooking có nhiều state
-  const {number} = useSelector((state) => state.btMovieBooking)
+  // const {number} = useSelector((state) => state.btMovieBooking)
   // console.log('number: ', number);
 
   const dispatch = useDispatch();

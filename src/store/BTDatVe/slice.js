@@ -3,8 +3,8 @@ import { createSlice } from "@reduxjs/toolkit"
 // import { rootReducer } from "../rootReducer"
 
 const initialState = {
-    number: 100,
-    // chairsBooking: [],
+    // number: 100,
+    chairsBooking: [],
     // chairsBooked: [],
 }
 
@@ -34,7 +34,16 @@ export const btMovieBookingSlice = createSlice (
                 // immerjs là thư viện tích hợp sẵn trong redux toolkit giúp mình tham chiếu state mới của mình vào 1 ô nhớ mới chứ ko cần phải return{...state} như redux cũ
             }
             */
-           
+
+            // tạo action cho chairsBooking
+            setChairsBooking: (state, action) => {
+                // console.log('action: ', action);
+                // action đưa lên với payload là 1 cái ghế
+                // sau đó mình phải push nó vào cái mảng rỗng chairsBooking trong initialState
+                state.chairsBooking.push(action.payload);
+                // console.log('state.chairsBooking: ', state.chairsBooking);
+            }
+
         },
     }
 )
