@@ -7,7 +7,6 @@ export const Result = () => {
   // Thử lấy number từ btMovieBooking (đc định nghĩa trong rootReducer)
   // useSelector trả về 1 call back về 1 cái state btMovieBooking
   // bóc tách ra muốn lấy những cái nào vì trong btMovieBooking có nhiều state
-
   const { number, chairsBooking } = useSelector((state) => state.btMovieBooking)
   // console.log('chairsBooking: ', chairsBooking);
   // console.log('number: ', number);
@@ -46,7 +45,7 @@ export const Result = () => {
           {
             chairsBooking.map((ghe) => {
               return (
-                <tr>
+                <tr key={ghe.soGhe}>
                   <td>{ghe.soGhe}</td>
                   <td>{ghe.gia}</td>
                   <td className='text-danger'>X</td>
@@ -69,6 +68,15 @@ export const Result = () => {
           </td>
         </tr>
       </table>
+      <button className='btn btn-success'
+        onClick={() => {
+          // payload lúc này có thể truyền hoặc ko, vì mình có thể dựa vào cái ghé đang chọn là chairsBooking
+          // nếu ko truyền gì vào thì nó hiểu là ko có payload và undefined
+          dispatch(btMovieBookingActions.setChairsBooked())
+        }}
+      >
+        Thanh toán
+      </button>
 
 
       {/* <button className='btn btn-success' onClick={() => {
