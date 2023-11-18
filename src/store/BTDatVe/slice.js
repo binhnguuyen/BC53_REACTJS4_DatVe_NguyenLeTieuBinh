@@ -37,6 +37,8 @@ export const btMovieBookingSlice = createSlice(
 
             // tạo action cho chairsBooking
             setChairsBooking: (state, action) => {
+                document.querySelector("#paymentSuccess").classList.remove("d-block");
+                document.querySelector("#paymentSuccess").classList.add("d-none");
                 // bóc tách action trong payload ra thành action luôn
                 const { payload } = action;
                 // console.log('action: ', action);
@@ -66,9 +68,11 @@ export const btMovieBookingSlice = createSlice(
                 const { payload } = action;
 
                 // thêm ghế đang chọn vào ghế đã chọn
-                if ( state.chairsBooking.length != 0 ) {
+                if (state.chairsBooking.length != 0) {
+                    document.querySelector("#paymentSuccess").classList.remove("d-none");
+                    document.querySelector("#paymentSuccess").classList.add("d-block");
                     state.chairsBooked = [...state.chairsBooked, ...state.chairsBooking];
-                    alert("Bạn đã thanh toán thành công")
+                    // alert("Bạn đã thanh toán thành công")
                 }
                 // sau khi thêm ghé đang chọn vào ghế đã chọn rồi thì ghế đang chọn phải đưa về mảng rỗng
                 state.chairsBooking = [];

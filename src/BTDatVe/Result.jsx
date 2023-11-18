@@ -74,6 +74,7 @@ export const Result = () => {
           </td>
         </tr>
       </table>
+      <h5 id='paymentSuccess' className='d-none text-danger'>Bạn đã thanh toán thành công</h5>
       <button className='btn btn-success'
         onClick={() => {
           // payload lúc này có thể truyền hoặc ko, vì mình có thể dựa vào cái ghé đang chọn là chairsBooking
