@@ -43,7 +43,6 @@ export const btMovieBookingSlice = createSlice(
 
                 // định nghĩa chairsBooking trong state ra thành stateChairsBooking luôn
                 const stateChairsBooking = state.chairsBooking;
-                console.log('stateChairsBooking: ', stateChairsBooking);
 
                 // action đưa lên với payload là 1 cái ghế
                 // sau đó mình phải push nó vào cái mảng rỗng stateChairsBooking trong initialState
@@ -52,6 +51,7 @@ export const btMovieBookingSlice = createSlice(
                 if (index !== -1) {
                     // stateChairsBooking.filter((value) => value.soGhe !== payload.soGhe)
                     // hoặc có thể xoá phần tử tìm đc trong mảng trong mảng như sau
+                    alert("Bạn có chắc chắn xoá ghế này ra khỏi danh sách")
                     stateChairsBooking.splice(index, 1)
                 }
                 // nếu chưa có ghế thì push vào
