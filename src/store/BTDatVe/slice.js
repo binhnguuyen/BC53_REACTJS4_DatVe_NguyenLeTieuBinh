@@ -11,7 +11,7 @@ const initialState = {
 // Cái hàm createSlice giúp vừa tạo ra reducer vừa tạo ra file action
 // ở redux thường thì phải tạo ra 1 reducer.js và 1 action.js
 // không cần phải tách ra file action riêng như trong redux thường
-export const btMovieBookingSlice = createSlice (
+export const btMovieBookingSlice = createSlice(
     {
         // cái name này đưa vào root reducer
         name: "BTMovieBooking",
@@ -38,17 +38,18 @@ export const btMovieBookingSlice = createSlice (
             // tạo action cho chairsBooking
             setChairsBooking: (state, action) => {
                 // bóc tách action trong payload ra thành action luôn
-                const {payload} = action;
+                const { payload } = action;
                 // console.log('action: ', action);
 
                 // định nghĩa chairsBooking trong state ra thành stateChairsBooking luôn
                 const stateChairsBooking = state.chairsBooking;
+                console.log('stateChairsBooking: ', stateChairsBooking);
 
                 // action đưa lên với payload là 1 cái ghế
                 // sau đó mình phải push nó vào cái mảng rỗng stateChairsBooking trong initialState
                 const index = stateChairsBooking.findIndex((value) => value.soGhe === payload.soGhe)
                 // nếu đã có ghế rồi thì xoá đi
-                if( index !== -1 ){
+                if (index !== -1) {
                     // stateChairsBooking.filter((value) => value.soGhe !== payload.soGhe)
                     // hoặc có thể xoá phần tử tìm đc trong mảng trong mảng như sau
                     stateChairsBooking.splice(index, 1)
@@ -62,14 +63,15 @@ export const btMovieBookingSlice = createSlice (
 
             // tạo action cho chairBooked
             setChairsBooked: (state, action) => {
-                const {payload} = action;
-                const stateChairsBooked = state.chairsBooked;
+                const { payload } = action;
 
                 // thêm ghế đang chọn vào ghế đã chọn
-                state.chairsBooked = [...state.chairsBooked, ...state.chairsBooking];
+                if ( state.chairsBooking.length != 0 ) {
+                    state.chairsBooked = [...state.chairsBooked, ...state.chairsBooking];
+                    alert("Bạn đã thanh toán thành công")
+                }
                 // sau khi thêm ghé đang chọn vào ghế đã chọn rồi thì ghế đang chọn phải đưa về mảng rỗng
                 state.chairsBooking = [];
-                console.log('stateChairsBooked: ', stateChairsBooked);
             }
 
         },
@@ -83,4 +85,4 @@ export const btMovieBookingSlice = createSlice (
 // B1: bóc tách thành 2 thành phần reducer và action
 // B2: đặt lại tên cho reducer và action
 // nhớ là reducer đặt ở đây phải cho vào rootReducer
-export const{ reducer: btMovieBookingReducer, actions: btMovieBookingActions} = btMovieBookingSlice
+export const { reducer: btMovieBookingReducer, actions: btMovieBookingActions } = btMovieBookingSlice

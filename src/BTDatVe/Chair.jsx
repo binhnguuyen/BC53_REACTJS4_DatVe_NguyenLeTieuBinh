@@ -25,8 +25,8 @@ export const Chair = (props) => {
         // thêm vào className "ghe" mặc định để css
         ("ghe",
           {
-            // nếu giá trị là true thì nó sẽ thêm class gheDangChon vào thẻ div cha. Ngược lại là false thì sẽ mất class gheDangChon vào
-            // những ghế nào đang nằm trong chairsBooking thì thêm class gheDangChon, nếu có thì thêm class gheDangChon
+            // nếu giá trị là true thì nó sẽ thêm class gheDangChon vào thẻ div cha. Ngược lại là false thì sẽ mất class gheDangChon
+            // những ghế nào đang nằm trong chairsBooking thì thêm class gheDangChon, nếu có rồi thì xoá class gheDangChon
             // "gheDangChon: true" nghĩa là nếu phép tính sau dấu ":" là true thì thêm className "gheDangChon" vào, ngược lại nếu là false thì ko thêm
             gheDangChon: chairsBooking.find((e) => e.soGhe === ghe.soGhe),
             gheDuocChon: chairsBooked.find((e) => e.soGhe === ghe.soGhe),
